@@ -1,4 +1,4 @@
-MOVIES = [
+var MOVIES = [
   {
     "title": "Bad Moms",
     "id": "191125",
@@ -461,4 +461,4 @@ MOVIES = [
       }
     ]
   }
-]
+];
