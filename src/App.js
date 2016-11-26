@@ -472,9 +472,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     for (var movie of MOVIES) {
-      for (var showtime of movie.showtimes) {
-        showtime.eligible = true;
-      }
+      movie.eligible = true;
     }
     this.state = {movies: MOVIES};
     this.movieChecked = this.movieChecked.bind(this);
@@ -493,9 +491,7 @@ class App extends Component {
     var newMovies = this.state.movies.slice();
     for (var movie of newMovies) {
       if (movie.id === movieId) {
-        for (var showtime of movie.showtimes) {
-          showtime.eligible = checked;
-        }
+        movie.eligible = checked;
       }
     }
     this.setState({movies: newMovies});

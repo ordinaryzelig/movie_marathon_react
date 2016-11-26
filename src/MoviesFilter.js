@@ -6,7 +6,7 @@ class MoviesFilter extends Component {
       return(
         <li key={`${movie.title} ${movie.id}`}>
           <label>
-            <input type="checkbox" onChange={(event) => this.props.movieChecked(movie.id, event.target.checked)} />
+            <input type="checkbox" checked={movie.eligible} onChange={(event) => this.props.movieChecked(movie.id, event.target.checked)} />
             {movie.title}
           </label>
         </li>
