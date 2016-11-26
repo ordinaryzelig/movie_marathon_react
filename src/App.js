@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import MoviesList from './MoviesList';
+import MoviesFilter from './MoviesFilter';
 
 var MOVIES = [
   {
@@ -471,6 +472,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <MoviesFilter movies={MOVIES} />
         <MoviesList data={MOVIES} />
       </div>
     );

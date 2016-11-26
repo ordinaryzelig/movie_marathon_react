@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import './Showtime.css';
 
 class Showtime extends Component {
   render() {
     return(
-      <div>{this.props.movie.title} @ {this.props.showtime.datetime}</div>
+      <div className={(this.props.showtime.eligible ? 'eligible' : 'ineligible') + ' showtime'}>
+        {this.props.movie.title} @ {this.props.showtime.datetime}
+      </div>
     );
   }
 }
