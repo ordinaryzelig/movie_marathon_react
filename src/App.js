@@ -469,13 +469,36 @@ var MOVIES = [
 ];
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    for (var movie of MOVIES) {
+      for (var showtime of movie.showtimes) {
+        showtime.eligible = true;
+      }
+    }
+    this.state = {movies: MOVIES};
+    this.movieChecked = this.movieChecked.bind(this);
+  }
+
   render() {
     return (
       <div>
-        <MoviesFilter movies={MOVIES} />
-        <MoviesList data={MOVIES} />
+        <MoviesFilter movies={this.state.movies} movieChecked={this.movieChecked} />
+        <MoviesList data={this.state.movies} />
       </div>
     );
+  }
+
+  movieChecked(movieId, checked) {
+    var newMovies = this.state.movies.slice();
+    for (var movie of newMovies) {
+      if (movie.id === movieId) {
+        for (var showtime of movie.showtimes) {
+          showtime.eligible = checked;
+        }
+      }
+    }
+    this.setState({movies: newMovies});
   }
 }
 

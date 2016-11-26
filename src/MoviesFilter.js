@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import MovieCheckbox from './MovieCheckbox';
 
-class MoviesList extends Component {
+class MoviesFilter extends Component {
   render() {
-    var checkboxes = this.props.movies.map(function(movie) {
+    var checkboxes = this.props.movies.map((movie) => {
       return(
         <li key={`${movie.title} ${movie.id}`}>
-          <MovieCheckbox movie={movie} />
+          <label>
+            <input type="checkbox" onChange={(event) => this.props.movieChecked(movie.id, event.target.checked)} />
+            {movie.title}
+          </label>
         </li>
       );
     });
@@ -18,4 +20,4 @@ class MoviesList extends Component {
   }
 }
 
-export default MoviesList;
+export default MoviesFilter;

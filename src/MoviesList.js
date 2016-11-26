@@ -7,7 +7,6 @@ class MoviesList extends Component {
     for (var movie of this.props.data) {
       for (var showtime of movie.showtimes) {
         var key = `${movie.id}-${showtime.datetime}`;
-        showtime.eligible = true;
         showtimes.push(
           <Showtime movie={movie} showtime={showtime} key={key} />
         );
