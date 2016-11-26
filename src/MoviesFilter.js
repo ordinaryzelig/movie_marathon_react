@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MoviesFilter.css';
 
 class MoviesFilter extends Component {
   render() {
@@ -13,7 +14,7 @@ class MoviesFilter extends Component {
       );
     });
     return(
-      <ul>
+      <ul id="movies-filter">
         {checkboxes}
       </ul>
     );
