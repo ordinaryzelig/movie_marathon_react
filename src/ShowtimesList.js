@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Showtime from './Showtime';
 
-class MoviesList extends Component {
+class ShowtimesList extends Component {
   render() {
     var showtimes = [];
     for (var movie of this.props.data) {
@@ -24,4 +24,4 @@ class MoviesList extends Component {
   }
 }
 
-export default MoviesList;
+export default ShowtimesList;

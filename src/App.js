@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import MOVIES from './MOVIES';
-import MoviesList from './MoviesList';
+import ShowtimesList from './ShowtimesList';
 import MoviesFilter from './MoviesFilter';
 import Datetime from './Datetime';
 
@@ -26,7 +26,7 @@ class App extends Component {
           rangeChanged={this.rangeChanged}
           datetimeRanges={this.datetimeRanges}
         />
-        <MoviesList
+        <ShowtimesList
           data={this.state.movies}
           datetimeRanges={this.datetimeRanges}
         />
