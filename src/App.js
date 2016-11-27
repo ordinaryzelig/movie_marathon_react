@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import MOVIES from './MOVIES';
 import ShowtimesList from './ShowtimesList';
+import SelectedShowtimes from './SelectedShowtimes';
+
 import MoviesFilter from './MoviesFilter';
 import Datetime from './Datetime';
 
@@ -15,6 +17,7 @@ class App extends Component {
     this.state = {
       movies: MOVIES,
       showtimes: this.extractShowtimes(MOVIES),
+      selectedShowtimes: [],
     };
     this.movieChecked = this.movieChecked.bind(this);
     this.rangeChanged = this.rangeChanged.bind(this);
@@ -29,6 +32,9 @@ class App extends Component {
           movieChecked={this.movieChecked}
           rangeChanged={this.rangeChanged}
           datetimeRanges={this.datetimeRanges}
+        />
+        <SelectedShowtimes
+          showtimes={this.state.selectedShowtimes}
         />
         <ShowtimesList
           showtimes={this.state.showtimes}
@@ -60,6 +66,15 @@ class App extends Component {
     this.setState({movies: newMovies});
   }
 
+  showtimeSelected(showtime) {
+    this.addToSelected(showtime);
+    //this.makeMovieIneligible(showtime.movie);
+    //this.makeConflictingShowtimesIneligible(showtime);
+  }
+
+  //////////
+  // Helpers
+
   initMovies(movies) {
     for (var movie of movies) {
       movie.checked = false;
@@ -77,11 +92,7 @@ class App extends Component {
       var movie = movies[idx];
       showtimes = showtimes.concat(movie.showtimes);
     }
-    showtimes.sort(function(a, b) {
-      if (a.datetime < b.datetime) { return -1; }
-      if (a.datetime > b.datetime) { return 1; }
-      return 0;
-    });
+    this.sortShowtimes(showtimes);
     return showtimes;
   }
 
@@ -98,8 +109,22 @@ class App extends Component {
     });
   }
 
-  showtimeSelected(showtime) {
-    console.log(showtime);
+  addToSelected(showtime) {
+    var showtimes = this.state.selectedShowtimes.slice()
+    showtime.selected = true;
+    showtimes.push(showtime);
+    this.sortShowtimes(showtimes);
+    this.setState({
+      selectedShowtimes: showtimes
+    });
+  }
+
+  sortShowtimes(showtimes) {
+    showtimes.sort(function(a, b) {
+      if (a.datetime < b.datetime) { return -1; }
+      if (a.datetime > b.datetime) { return 1; }
+      return 0;
+    });
   }
 }
 
