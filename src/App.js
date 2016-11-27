@@ -12,7 +12,10 @@ class App extends Component {
     this.initMovies(MOVIES);
     this.datetimeRanges = this.calculateDatetimeRanges(MOVIES);
 
-    this.state = {movies: MOVIES};
+    this.state = {
+      movies: MOVIES,
+      showtimes: this.extractShowtimes(MOVIES),
+    };
     this.movieChecked = this.movieChecked.bind(this);
     this.rangeChanged = this.rangeChanged.bind(this);
   }
@@ -27,7 +30,7 @@ class App extends Component {
           datetimeRanges={this.datetimeRanges}
         />
         <ShowtimesList
-          data={this.state.movies}
+          showtimes={this.state.showtimes}
           datetimeRanges={this.datetimeRanges}
         />
       </div>
@@ -64,6 +67,20 @@ class App extends Component {
         showtime.withinRange = true;
       }
     }
+  }
+
+  extractShowtimes(movies) {
+    var showtimes = [];
+    for (var idx = 0; idx < movies.length; idx++) {
+      var movie = movies[idx];
+      showtimes = showtimes.concat(movie.showtimes);
+    }
+    showtimes.sort(function(a, b) {
+      if (a.datetime < b.datetime) { return -1; }
+      if (a.datetime > b.datetime) { return 1; }
+      return 0;
+    });
+    return showtimes;
   }
 
   calculateDatetimeRanges(movies) {
