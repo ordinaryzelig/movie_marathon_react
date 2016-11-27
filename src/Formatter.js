@@ -7,11 +7,9 @@ const Formatter = {
   },
 
   formatHour: function(hours) {
-    if (hours > 12) {
-      return hours % 12;
-    } else {
-      return hours;
-    }
+    if (hours > 12) { return hours % 12; }
+    if (hours === 0) { return 12; }
+    return hours;
   },
 
   formatMinutes: function(minutes) {
