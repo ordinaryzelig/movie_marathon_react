@@ -12,12 +12,12 @@ class App extends Component {
     super(props);
 
     this.initMovies(MOVIES);
-    this.datetimeRanges = this.calculateDatetimeRanges(MOVIES);
 
     this.state = {
       movies: MOVIES,
       showtimes: this.extractShowtimes(MOVIES),
     };
+    this.datetimeRanges = this.calculateDatetimeRanges(this.state.showtimes);
     this.movieChecked = this.movieChecked.bind(this);
     this.onFilterTimeChange = this.onFilterTimeChange.bind(this);
     this.onShowtimeSelect = this.onShowtimeSelect.bind(this);
@@ -57,7 +57,9 @@ class App extends Component {
   onFilterTimeChange(range) {
     var newMovies = this.state.movies.map((movie) => {
       movie.showtimes = movie.showtimes.map((showtime) => {
-        showtime.withinRange = range[0] <= showtime.datetime && range[1] >= showtime.datetime;
+        var startsWithinRange = range[0] <= showtime.datetime;
+        var endsWithinRange = showtime.endTime <= range[1];
+        showtime.withinRange = startsWithinRange && endsWithinRange;
         return showtime;
       });
       return movie;
@@ -111,16 +113,16 @@ class App extends Component {
     return showtimes;
   }
 
-  calculateDatetimeRanges(movies) {
-    var datetimes = [];
-    for (var movie of movies) {
-      var movieDatetimes = movie.showtimes.map(function(showtime) {return showtime.datetime});
-      datetimes = datetimes.concat(movieDatetimes);
-    }
-    var sortedDatetimes = datetimes.sort();
+  calculateDatetimeRanges(showtimes) {
+    var startTimes = showtimes
+      .map(function(showtime) { return showtime.datetime; })
+      .sort();
+    var endTimes = showtimes
+      .map(function(showtime) { return showtime.endTime; })
+      .sort();
     return({
-      floor: Datetime.floor(sortedDatetimes[0]),
-      ceiling: Datetime.ceiling(sortedDatetimes[sortedDatetimes.length - 1])
+      floor: Datetime.floor(startTimes[0]),
+      ceiling: Datetime.ceiling(endTimes[endTimes.length - 1])
     });
   }
 
