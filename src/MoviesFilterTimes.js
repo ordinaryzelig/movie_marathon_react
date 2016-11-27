@@ -25,6 +25,7 @@ class MoviesFilterTimes extends Component {
         step={15}
         tipFormatter={this.formatTip}
         range
+        marks={this.marks()}
         defaultValue={[0, this.max]}
         onChange={this.onChange}
       />
@@ -42,6 +43,15 @@ class MoviesFilterTimes extends Component {
     return Formatter.formatTime(adjusted);
   }
 
+  marks() {
+    var marks = {};
+    var numHourIntervals = Math.floor((this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor) / 60000 / 60);
+    for (var hours = 0; hours <= numHourIntervals; hours++) {
+      var minutes = hours * 60
+      marks[minutes] = Formatter.formatTime(Datetime.addMinutes(this.props.datetimeRanges.floor, minutes));
+    }
+    return marks;
+  }
 }
 
 export default MoviesFilterTimes;
