@@ -17,7 +17,6 @@ class App extends Component {
     this.state = {
       movies: MOVIES,
       showtimes: this.extractShowtimes(MOVIES),
-      selectedShowtimes: [],
     };
     this.movieChecked = this.movieChecked.bind(this);
     this.rangeChanged = this.rangeChanged.bind(this);
@@ -34,7 +33,7 @@ class App extends Component {
           datetimeRanges={this.datetimeRanges}
         />
         <SelectedShowtimes
-          showtimes={this.state.selectedShowtimes}
+          showtimes={this.selectedShowtimes()}
         />
         <ShowtimesList
           showtimes={this.state.showtimes}
@@ -67,7 +66,7 @@ class App extends Component {
   }
 
   showtimeSelected(showtime) {
-    this.addToSelected(showtime);
+    this.markSelected(showtime);
     //this.makeMovieIneligible(showtime.movie);
     //this.makeConflictingShowtimesIneligible(showtime);
   }
@@ -109,20 +108,25 @@ class App extends Component {
     });
   }
 
-  addToSelected(showtime) {
-    var showtimes = this.state.selectedShowtimes.slice()
-    showtime.selected = true;
-    showtimes.push(showtime);
-    showtimes.sort(this.showtimeSorter);
-    this.setState({
-      selectedShowtimes: showtimes
-    });
+  markSelected(selected) {
+    var showtimes = this.state.showtimes.slice()
+    for (var idx = 0; idx < showtimes.length; idx++) {
+      var showtime = showtimes[idx];
+      if (showtime === selected) {
+        showtime.selected = true;
+      }
+    }
+    this.setState({showtimes: showtimes});
   }
 
   showtimeSorter(a, b) {
     if (a.datetime < b.datetime) { return -1; }
     if (a.datetime > b.datetime) { return 1; }
     return 0;
+  }
+
+  selectedShowtimes() {
+    return this.state.showtimes.filter(function(showtime) { return showtime.selected; } )
   }
 }
 
