@@ -1,6 +1,9 @@
 .showtime {
   color: white;
   position: relative;
+  height: 20px;
+  margin: 5px 0 5px 0;
+  cursor: pointer;
 }
 
 .showtime.selected {
@@ -12,14 +15,13 @@
   opacity: 0.35;
 }
 
-.showtime .title, .showtime .time {
-  padding: 0 5px 0 5px;
+.showtime .title {
+  padding: 1px;
 }
 
 .showtime .title {
   background-color: blue;
-}
-
-.showtime .time {
-  background-color: green;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

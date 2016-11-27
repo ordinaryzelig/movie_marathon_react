@@ -10,8 +10,7 @@ class Showtime extends Component {
         style={{marginLeft: this.marginLeft(), width: this.runtimeWidth()}}
         onClick={() => this.props.onShowtimeSelect(this.props.showtime)}
       >
-        <span className="title">{this.props.showtime.movie.title}</span>
-        <span className="time">{Formatter.formatTime(this.props.showtime.datetime)}</span>
+        <div className="title">{this.props.showtime.movie.title}</div>
       </div>
     );
   }
