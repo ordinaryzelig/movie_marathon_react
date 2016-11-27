@@ -92,7 +92,7 @@ class App extends Component {
       var movie = movies[idx];
       showtimes = showtimes.concat(movie.showtimes);
     }
-    this.sortShowtimes(showtimes);
+    showtimes.sort(this.showtimeSorter);
     return showtimes;
   }
 
@@ -113,18 +113,16 @@ class App extends Component {
     var showtimes = this.state.selectedShowtimes.slice()
     showtime.selected = true;
     showtimes.push(showtime);
-    this.sortShowtimes(showtimes);
+    showtimes.sort(this.showtimeSorter);
     this.setState({
       selectedShowtimes: showtimes
     });
   }
 
-  sortShowtimes(showtimes) {
-    showtimes.sort(function(a, b) {
-      if (a.datetime < b.datetime) { return -1; }
-      if (a.datetime > b.datetime) { return 1; }
-      return 0;
-    });
+  showtimeSorter(a, b) {
+    if (a.datetime < b.datetime) { return -1; }
+    if (a.datetime > b.datetime) { return 1; }
+    return 0;
   }
 }
 
