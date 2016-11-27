@@ -1,5 +1,5 @@
-.showtime.ineligible {
-  display: none;
+.showtime.unselectable {
+  opacity: 0.35;
 }
 
 .showtime .title {
