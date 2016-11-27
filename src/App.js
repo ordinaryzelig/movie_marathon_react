@@ -93,6 +93,7 @@ class App extends Component {
         if (!showtime.runtime) {
           showtime.runtime = 120;
         }
+        showtime.endTime = Datetime.addMinutes(showtime.datetime, showtime.runtime);
       }
     }
   }
@@ -163,17 +164,15 @@ class App extends Component {
 
     showtimes.conflictsWithSelected = function(showtime) {
       for (var selected of showtimes.selected()) {
-        var selectedEndTime = Datetime.addMinutes(selected.datetime, selected.movie.runtime);
-        var showtimeEndTime = Datetime.addMinutes(showtime.datetime, showtime.movie.runtime);
         var conflicts =
           (
             selected.datetime <= showtime.datetime
-              && showtime.datetime <= selectedEndTime
+              && showtime.datetime <= selected.endTime
           )
           ||
           (
-            showtimeEndTime >= selected.datetime
-              && showtimeEndTime <= selectedEndTime
+            showtime.endTime >= selected.datetime
+              && showtime.endTime <= selected.endTime
           )
         if (conflicts) { return conflicts }
       }
