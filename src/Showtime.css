@@ -1,5 +1,11 @@
 .showtime {
   color: white;
+  position: relative;
+}
+
+.showtime.selected {
+  font-weight: bold;
+  color: yellow;
 }
 
 .showtime.unselectable {
