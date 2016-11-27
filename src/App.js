@@ -163,9 +163,18 @@ class App extends Component {
 
     showtimes.conflictsWithSelected = function(showtime) {
       for (var selected of showtimes.selected()) {
-        var endTime = Datetime.addMinutes(selected.datetime, selected.movie.runtime);
-        var conflicts = selected.datetime <= showtime.datetime &&
-                        showtime.datetime <= endTime
+        var selectedEndTime = Datetime.addMinutes(selected.datetime, selected.movie.runtime);
+        var showtimeEndTime = Datetime.addMinutes(showtime.datetime, showtime.movie.runtime);
+        var conflicts =
+          (
+            selected.datetime <= showtime.datetime
+              && showtime.datetime <= selectedEndTime
+          )
+          ||
+          (
+            showtimeEndTime >= selected.datetime
+              && showtimeEndTime <= selectedEndTime
+          )
         if (conflicts) { return conflicts }
       }
       return false;
