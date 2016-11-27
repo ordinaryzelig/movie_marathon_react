@@ -3,12 +3,15 @@
   position: relative;
   height: 20px;
   margin: 5px 0 5px 0;
-  cursor: pointer;
 }
 
 .showtime.selected {
   font-weight: bold;
   color: yellow;
+}
+
+.showtime.selected, .showtime.selectable {
+  cursor: pointer;
 }
 
 .showtime.unselectable {
