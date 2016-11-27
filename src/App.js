@@ -119,6 +119,7 @@ class App extends Component {
       var showtime = showtimes[idx];
       if (showtime === selected) {
         showtime.selected = true;
+        showtime.movie.selected = true;
       }
     }
     this.addShowtimeFunctions(showtimes);
@@ -133,8 +134,19 @@ class App extends Component {
 
   addShowtimeFunctions(showtimes) {
     showtimes.selected = function() {
-      return this.filter(function(showtime) { return showtime.selected; } )
+      var selected = this.filter(function(showtime) { return showtime.selected; } )
+      return selected;
     };
+
+    showtimes.conflictsWithSelected = function(showtime) {
+      for (var selected of showtimes.selected()) {
+        var endTime = Datetime.addMinutes(selected.datetime, selected.movie.runtime);
+        var conflicts = selected.datetime <= showtime.datetime &&
+                        showtime.datetime <= endTime
+        if (conflicts) { return conflicts }
+      }
+      return false;
+    }
   }
 }
 

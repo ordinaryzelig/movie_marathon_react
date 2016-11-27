@@ -17,9 +17,10 @@ class Showtime extends Component {
   }
 
   selectableClass() {
-    //console.log(this.props.movie.checked);
-    //console.log(this.props.showtime.withinRange);
-    if (this.props.showtime.movie.checked && this.props.showtime.withinRange) {
+    if (this.props.showtime.selected) {
+      return 'selected';
+    }
+    if (!this.props.showtime.movie.selected && this.props.showtime.withinRange && !this.props.conflictsWithSelected) {
       return 'selectable';
     } else {
       return 'unselectable';
