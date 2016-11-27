@@ -475,10 +475,12 @@ class App extends Component {
       movie.checked = false;
       for (var showtime of movie.showtimes) {
         showtime.datetime = new Date(showtime.datetime);
+        showtime.withinRange = true;
       }
     }
     this.state = {movies: MOVIES};
     this.movieChecked = this.movieChecked.bind(this);
+    this.rangeChanged = this.rangeChanged.bind(this);
   }
 
   render() {
@@ -501,7 +503,14 @@ class App extends Component {
   }
 
   rangeChanged(range) {
-    console.log(range);
+    var newMovies = this.state.movies.map((movie) => {
+      movie.showtimes = movie.showtimes.map((showtime) => {
+        showtime.withinRange = range[0] <= showtime.datetime && range[1] >= showtime.datetime;
+        return showtime;
+      });
+      return movie;
+    });
+    this.setState({movies: newMovies});
   }
 }
 
