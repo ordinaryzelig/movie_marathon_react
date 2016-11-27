@@ -66,7 +66,12 @@ class App extends Component {
   }
 
   onShowtimeSelect(showtime) {
-    if (!showtime.selected && !showtime.movie.selected && !this.state.showtimes.conflictsWithSelected(showtime)) {
+    if (
+      !showtime.selected
+        && !showtime.movie.selected
+        && !this.state.showtimes.conflictsWithSelected(showtime)
+        && showtime.withinRange
+    ) {
       this.markSelected(showtime);
     }
   }
