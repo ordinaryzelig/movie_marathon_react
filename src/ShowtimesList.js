@@ -13,6 +13,7 @@ class ShowtimesList extends Component {
             showtime={showtime}
             datetimeRanges={this.props.datetimeRanges}
             onShowtimeSelected={this.props.onShowtimeSelected}
+            overlapsSelected={this.overlapsSelected(showtime)}
           />
         );
       }
@@ -23,6 +24,10 @@ class ShowtimesList extends Component {
         {showtimeComponents}
       </div>
     );
+  }
+
+  overlapsSelected(showtime) {
+
   }
 }
 

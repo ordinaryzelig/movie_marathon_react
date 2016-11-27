@@ -33,7 +33,7 @@ class App extends Component {
           datetimeRanges={this.datetimeRanges}
         />
         <SelectedShowtimes
-          showtimes={this.selectedShowtimes()}
+          showtimes={this.state.showtimes.selected()}
         />
         <ShowtimesList
           showtimes={this.state.showtimes}
@@ -94,6 +94,9 @@ class App extends Component {
       showtimes = showtimes.concat(movie.showtimes);
     }
     showtimes.sort(this.showtimeSorter);
+
+    this.addShowtimeFunctions(showtimes);
+
     return showtimes;
   }
 
@@ -118,6 +121,7 @@ class App extends Component {
         showtime.selected = true;
       }
     }
+    this.addShowtimeFunctions(showtimes);
     this.setState({showtimes: showtimes});
   }
 
@@ -127,8 +131,10 @@ class App extends Component {
     return 0;
   }
 
-  selectedShowtimes() {
-    return this.state.showtimes.filter(function(showtime) { return showtime.selected; } )
+  addShowtimeFunctions(showtimes) {
+    showtimes.selected = function() {
+      return this.filter(function(showtime) { return showtime.selected; } )
+    };
   }
 }
 
