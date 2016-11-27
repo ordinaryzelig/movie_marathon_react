@@ -66,6 +66,10 @@ class App extends Component {
   }
 
   onShowtimeSelect(showtime) {
+    if (showtime.selected) {
+      this.unmarkSelected(showtime);
+      return;
+    }
     if (
       !showtime.selected
         && !showtime.movie.selected
@@ -120,12 +124,25 @@ class App extends Component {
   }
 
   markSelected(selected) {
+    this.setShowtimeState(selected, function(newShowtime) {
+      newShowtime.selected = true;
+      newShowtime.movie.selected = true;
+    });
+  }
+
+  unmarkSelected(selected) {
+    this.setShowtimeState(selected, function(newShowtime) {
+      newShowtime.selected = false;
+      newShowtime.movie.selected = false;
+    });
+  }
+
+  setShowtimeState(oldShowtime, setNewState) {
     var showtimes = this.state.showtimes.slice()
     for (var idx = 0; idx < showtimes.length; idx++) {
-      var showtime = showtimes[idx];
-      if (showtime === selected) {
-        showtime.selected = true;
-        showtime.movie.selected = true;
+      var newShowtime = showtimes[idx];
+      if (newShowtime === oldShowtime) {
+        setNewState(newShowtime);
       }
     }
     this.addShowtimeFunctions(showtimes);
