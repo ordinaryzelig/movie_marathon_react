@@ -472,7 +472,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     for (var movie of MOVIES) {
-      movie.eligible = true;
+      movie.eligible = false;
     }
     this.state = {movies: MOVIES};
     this.movieChecked = this.movieChecked.bind(this);

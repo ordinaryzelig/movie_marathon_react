@@ -1,3 +1,11 @@
 .showtime.ineligible {
-  opacity: .5;
+  display: none;
+}
+
+.showtime .title {
+  color: blue;
+}
+
+.showtime .time {
+  color: green;
 }
