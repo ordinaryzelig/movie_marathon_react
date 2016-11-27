@@ -8,7 +8,7 @@ const Formatter = {
 
   formatHour: function(hours) {
     if (hours > 12) {
-      return hours % 12 + 1;
+      return hours % 12;
     } else {
       return hours;
     }
@@ -23,7 +23,7 @@ const Formatter = {
   },
 
   formatMeridiem: function(hours) {
-    if (hours > 12) {
+    if (hours >= 12) {
       return 'p.m.';
     } else {
       return 'a.m.';

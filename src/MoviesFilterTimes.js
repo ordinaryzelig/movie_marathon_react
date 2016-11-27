@@ -15,9 +15,10 @@ class MoviesFilterTimes extends Component {
     this.latestTime = this.props.datetimes[this.props.datetimes.length - 1];
     this.ceilingTime = this.ceiling(this.latestTime);
 
-    this.max = (this.latestTime - this.earliestTime) / 60000;
+    this.max = (this.ceilingTime - this.floorTime) / 60000;
 
     this.formatTip = this.formatTip.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   render() {
@@ -34,12 +35,14 @@ class MoviesFilterTimes extends Component {
     );
   }
 
-  onChange(value) {
-    console.log(value);
+  onChange(range) {
+    var minDatetime = this.addMinutes(this.floorTime, range[0]);
+    var maxDatetime = this.addMinutes(this.floorTime, range[1]);
+    this.props.rangeChanged([minDatetime, maxDatetime]);
   }
 
   formatTip(minutes) {
-    var adjusted = this.addMinutes(this.earliestTime, minutes);
+    var adjusted = this.addMinutes(this.floorTime, minutes);
     return Formatter.formatTime(adjusted);
   }
 

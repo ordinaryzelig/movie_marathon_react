@@ -484,7 +484,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MoviesFilter movies={this.state.movies} movieChecked={this.movieChecked} />
+        <MoviesFilter movies={this.state.movies} movieChecked={this.movieChecked} rangeChanged={this.rangeChanged} />
         <MoviesList data={this.state.movies} />
       </div>
     );
@@ -498,6 +498,10 @@ class App extends Component {
       }
     }
     this.setState({movies: newMovies});
+  }
+
+  rangeChanged(range) {
+    console.log(range);
   }
 }
 

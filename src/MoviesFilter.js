@@ -17,7 +17,7 @@ class MoviesFilter extends Component {
     return(
       <div>
         <MoviesFilterCheckboxes movies={this.props.movies} movieChecked={this.props.movieChecked} />
-        <MoviesFilterTimes datetimes={this.datetimes} />
+        <MoviesFilterTimes datetimes={this.datetimes} rangeChanged={this.props.rangeChanged} />
       </div>
     );
   }
