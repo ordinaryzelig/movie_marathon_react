@@ -5,7 +5,7 @@ import Formatter from './formatter';
 class Showtime extends Component {
   render() {
     return(
-      <div className={'showtime ' + this.selectableClass()}>
+      <div className={'showtime ' + this.selectableClass()} style={{marginLeft: this.marginLeft()}}>
         <span className="title">{this.props.movie.title}</span>
         <span className="time">{Formatter.formatTime(this.props.showtime.datetime)}</span>
       </div>
@@ -20,6 +20,13 @@ class Showtime extends Component {
     } else {
       return 'unselectable';
     }
+  }
+
+  marginLeft() {
+    var percent = (this.props.showtime.datetime - this.props.datetimeRanges.floor)
+      / (this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor)
+      * 100;
+    return `${percent}%`;
   }
 }
 

@@ -8,7 +8,12 @@ class MoviesList extends Component {
       for (var showtime of movie.showtimes) {
         var key = `${movie.id}-${showtime.datetime}`;
         showtimes.push(
-          <Showtime movie={movie} showtime={showtime} key={key} />
+          <Showtime
+            key={key}
+            movie={movie}
+            showtime={showtime}
+            datetimeRanges={this.props.datetimeRanges}
+          />
         );
       }
     }
