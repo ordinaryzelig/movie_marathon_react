@@ -473,6 +473,9 @@ class App extends Component {
     super(props);
     for (var movie of MOVIES) {
       movie.eligible = false;
+      for (var showtime of movie.showtimes) {
+        showtime.datetime = new Date(showtime.datetime);
+      }
     }
     this.state = {movies: MOVIES};
     this.movieChecked = this.movieChecked.bind(this);
