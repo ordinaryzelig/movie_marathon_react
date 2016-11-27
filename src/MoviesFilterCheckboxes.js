@@ -1,0 +1,23 @@
+import React, { Component } from 'react';
+
+class MoviesFilterCheckboxes extends Component {
+  render() {
+    var checkboxes = this.props.movies.map((movie) => {
+      return(
+        <li key={`${movie.title} ${movie.id}`}>
+          <label>
+            <input type="checkbox" checked={movie.eligible} onChange={(event) => this.props.movieChecked(movie.id, event.target.checked)} />
+            {movie.title}
+          </label>
+        </li>
+      );
+    });
+    return(
+      <ul id="movies-filter">
+        {checkboxes}
+      </ul>
+    );
+  }
+}
+
+export default MoviesFilterCheckboxes;
