@@ -10,6 +10,7 @@ class ShowtimesList extends Component {
           key={key}
           showtime={showtime}
           datetimeRanges={this.props.datetimeRanges}
+          showtimeSelected={this.props.showtimeSelected}
         />
       );
     });

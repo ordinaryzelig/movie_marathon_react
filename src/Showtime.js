@@ -5,7 +5,11 @@ import Formatter from './formatter';
 class Showtime extends Component {
   render() {
     return(
-      <div className={'showtime ' + this.selectableClass()} style={{marginLeft: this.marginLeft()}}>
+      <div
+        className={'showtime ' + this.selectableClass()}
+        style={{marginLeft: this.marginLeft()}}
+        onClick={() => this.props.showtimeSelected(this.props.showtime)}
+      >
         <span className="title">{this.props.showtime.movie.title}</span>
         <span className="time">{Formatter.formatTime(this.props.showtime.datetime)}</span>
       </div>

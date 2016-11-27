@@ -18,6 +18,7 @@ class App extends Component {
     };
     this.movieChecked = this.movieChecked.bind(this);
     this.rangeChanged = this.rangeChanged.bind(this);
+    this.showtimeSelected = this.showtimeSelected.bind(this);
   }
 
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
         <ShowtimesList
           showtimes={this.state.showtimes}
           datetimeRanges={this.datetimeRanges}
+          showtimeSelected={this.showtimeSelected}
         />
       </div>
     );
@@ -94,6 +96,10 @@ class App extends Component {
       floor: Datetime.floor(sortedDatetimes[0]),
       ceiling: Datetime.ceiling(sortedDatetimes[sortedDatetimes.length - 1])
     });
+  }
+
+  showtimeSelected(showtime) {
+    console.log(showtime);
   }
 }
 
