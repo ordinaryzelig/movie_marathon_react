@@ -36,7 +36,8 @@ class Showtime extends Component {
 
   runtimeWidth() {
     var spanMinutes = (this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor) / 60000;
-    return (this.props.showtime.runtime / spanMinutes) * 100;
+    var percent = (this.props.showtime.runtime / spanMinutes) * 100;
+    return `${percent}%`;
   }
 }
 

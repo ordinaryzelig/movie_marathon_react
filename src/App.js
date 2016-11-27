@@ -81,6 +81,9 @@ class App extends Component {
         showtime.movie = movie;
         showtime.datetime = new Date(showtime.datetime);
         showtime.withinRange = true;
+        if (!showtime.runtime) {
+          showtime.runtime = 120;
+        }
       }
     }
   }
