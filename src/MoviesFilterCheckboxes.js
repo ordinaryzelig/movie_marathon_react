@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Formatter from './Formatter';
 
 class MoviesFilterCheckboxes extends Component {
   render() {

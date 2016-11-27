@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Rcslider from 'rc-slider';
 require('rc-slider/assets/index.css');
-import Formatter from './formatter';
+import Formatter from './Formatter';
 import Datetime from './Datetime';
 
 class MoviesFilterTimes extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Formatter from './formatter';
+import Formatter from './Formatter';
 
 class SelectedShowtimes extends Component {
   render() {
