@@ -462,3 +462,5 @@ var MOVIES = [
     ]
   }
 ];
+
+export default MOVIES;
