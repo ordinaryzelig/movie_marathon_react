@@ -20,7 +20,7 @@ class App extends Component {
     };
     this.movieChecked = this.movieChecked.bind(this);
     this.onFilterTimeChange = this.onFilterTimeChange.bind(this);
-    this.onShowtimeSelected = this.onShowtimeSelected.bind(this);
+    this.onShowtimeSelect = this.onShowtimeSelect.bind(this);
   }
 
   render() {
@@ -38,7 +38,7 @@ class App extends Component {
         <ShowtimesList
           showtimes={this.state.showtimes}
           datetimeRanges={this.datetimeRanges}
-          onShowtimeSelected={this.onShowtimeSelected}
+          onShowtimeSelect={this.onShowtimeSelect}
         />
       </div>
     );
@@ -65,7 +65,7 @@ class App extends Component {
     this.setState({movies: newMovies});
   }
 
-  onShowtimeSelected(showtime) {
+  onShowtimeSelect(showtime) {
     if (!showtime.selected) {
       this.markSelected(showtime);
       //this.makeMovieIneligible(showtime.movie);

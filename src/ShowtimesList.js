@@ -12,7 +12,7 @@ class ShowtimesList extends Component {
             key={key}
             showtime={showtime}
             datetimeRanges={this.props.datetimeRanges}
-            onShowtimeSelected={this.props.onShowtimeSelected}
+            onShowtimeSelect={this.props.onShowtimeSelect}
             conflictsWithSelected={this.props.showtimes.conflictsWithSelected(showtime)}
           />
         );
