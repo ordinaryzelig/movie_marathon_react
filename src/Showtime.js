@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Showtime.css';
-import Formatter from './Formatter';
 
 class Showtime extends Component {
   render() {
