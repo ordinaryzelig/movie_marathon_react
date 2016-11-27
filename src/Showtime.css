@@ -1,11 +1,19 @@
+.showtime {
+  color: white;
+}
+
 .showtime.unselectable {
   opacity: 0.35;
 }
 
+.showtime .title, .showtime .time {
+  padding: 0 5px 0 5px;
+}
+
 .showtime .title {
-  color: blue;
+  background-color: blue;
 }
 
 .showtime .time {
-  color: green;
+  background-color: green;
 }
