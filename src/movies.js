@@ -2,6 +2,7 @@ var MOVIES = [
   {
     "title": "Bad Moms",
     "id": "191125",
+    "runtime": 101,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:30:00-05:00"
@@ -29,6 +30,7 @@ var MOVIES = [
   {
     "title": "Jason Bourne",
     "id": "190367",
+    "runtime": 123,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:00:00-05:00"
@@ -77,6 +79,7 @@ var MOVIES = [
   {
     "title": "Nerve",
     "id": "192705",
+    "runtime": 96,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:50:00-05:00"
@@ -98,6 +101,7 @@ var MOVIES = [
   {
     "title": "Absolutely Fabulous",
     "id": "187674",
+    "runtime": null,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:20:00-05:00"
@@ -119,6 +123,7 @@ var MOVIES = [
   {
     "title": "Ice Age: Collision Course 3D",
     "id": "188285",
+    "runtime": 94,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:50:00-05:00"
@@ -134,6 +139,7 @@ var MOVIES = [
   {
     "title": "Ice Age: Collision Course",
     "id": "188285",
+    "runtime": 94,
     "showtimes": [
       {
         "datetime": "2016-08-02T13:15:00-05:00"
@@ -152,6 +158,7 @@ var MOVIES = [
   {
     "title": "Lights Out",
     "id": "148574",
+    "runtime": 81,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:05:00-05:00"
@@ -176,6 +183,7 @@ var MOVIES = [
   {
     "title": "Star Trek Beyond: An IMAX 3D Experience",
     "id": "188462",
+    "runtime": 122,
     "showtimes": [
       {
         "datetime": "2016-08-02T13:10:00-05:00"
@@ -194,6 +202,7 @@ var MOVIES = [
   {
     "title": "Star Trek Beyond 3D",
     "id": "188462",
+    "runtime": 122,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:40:00-05:00"
@@ -212,6 +221,7 @@ var MOVIES = [
   {
     "title": "Star Trek Beyond",
     "id": "188462",
+    "runtime": 122,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:00:00-05:00"
@@ -236,6 +246,7 @@ var MOVIES = [
   {
     "title": "Café Society",
     "id": "192162",
+    "runtime": 96,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:35:00-05:00"
@@ -257,6 +268,7 @@ var MOVIES = [
   {
     "title": "Ghostbusters 3D",
     "id": "140163",
+    "runtime": null,
     "showtimes": [
       {
         "datetime": "2016-08-02T12:05:00-05:00"
@@ -269,6 +281,7 @@ var MOVIES = [
   {
     "title": "Ghostbusters (2016)",
     "id": "140163",
+    "runtime": 107,
     "showtimes": [
       {
         "datetime": "2016-08-02T13:20:00-05:00"
@@ -287,6 +300,7 @@ var MOVIES = [
   {
     "title": "Hillary's America: The Secret History of the Democratic Party",
     "id": "193778",
+    "runtime": 107,
     "showtimes": [
       {
         "datetime": "2016-08-02T12:50:00-05:00"
@@ -305,6 +319,7 @@ var MOVIES = [
   {
     "title": "The Infiltrator",
     "id": "191461",
+    "runtime": 127,
     "showtimes": [
       {
         "datetime": "2016-08-02T15:05:00-05:00"
@@ -317,6 +332,7 @@ var MOVIES = [
   {
     "title": "Captain Fantastic",
     "id": "190420",
+    "runtime": 119,
     "showtimes": [
       {
         "datetime": "2016-08-02T13:30:00-05:00"
@@ -335,6 +351,7 @@ var MOVIES = [
   {
     "title": "Mike & Dave Need Wedding Dates",
     "id": "188459",
+    "runtime": 98,
     "showtimes": [
       {
         "datetime": "2016-08-02T12:55:00-05:00"
@@ -353,6 +370,7 @@ var MOVIES = [
   {
     "title": "The Secret Life of Pets",
     "id": "184804",
+    "runtime": 90,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:15:00-05:00"
@@ -383,6 +401,7 @@ var MOVIES = [
   {
     "title": "The BFG",
     "id": "188457",
+    "runtime": 117,
     "showtimes": [
       {
         "datetime": "2016-08-02T13:55:00-05:00"
@@ -395,6 +414,7 @@ var MOVIES = [
   {
     "title": "The Legend of Tarzan",
     "id": "187791",
+    "runtime": null,
     "showtimes": [
       {
         "datetime": "2016-08-02T12:45:00-05:00"
@@ -413,6 +433,7 @@ var MOVIES = [
   {
     "title": "Independence Day: Resurgence",
     "id": "165895",
+    "runtime": 120,
     "showtimes": [
       {
         "datetime": "2016-08-02T16:50:00-05:00"
@@ -425,6 +446,7 @@ var MOVIES = [
   {
     "title": "The Shallows",
     "id": "185717",
+    "runtime": 87,
     "showtimes": [
       {
         "datetime": "2016-08-02T21:50:00-05:00"
@@ -434,6 +456,7 @@ var MOVIES = [
   {
     "title": "Central Intelligence",
     "id": "185755",
+    "runtime": 117,
     "showtimes": [
       {
         "datetime": "2016-08-02T17:15:00-05:00"
@@ -446,6 +469,7 @@ var MOVIES = [
   {
     "title": "Finding Dory",
     "id": "164333",
+    "runtime": 103,
     "showtimes": [
       {
         "datetime": "2016-08-02T11:05:00-05:00"
