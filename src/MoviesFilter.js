@@ -16,8 +16,14 @@ class MoviesFilter extends Component {
   render() {
     return(
       <div>
-        <MoviesFilterCheckboxes movies={this.props.movies} movieChecked={this.props.movieChecked} />
-        <MoviesFilterTimes datetimes={this.datetimes} rangeChanged={this.props.rangeChanged} />
+        <MoviesFilterCheckboxes
+          movies={this.props.movies}
+          movieChecked={this.props.movieChecked}
+        />
+        <MoviesFilterTimes
+          datetimeRanges={this.props.datetimeRanges}
+          rangeChanged={this.props.rangeChanged}
+        />
       </div>
     );
   }

@@ -3,17 +3,15 @@ import './App.css';
 import MOVIES from './MOVIES';
 import MoviesList from './MoviesList';
 import MoviesFilter from './MoviesFilter';
+import Datetime from './Datetime';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    for (var movie of MOVIES) {
-      movie.checked = false;
-      for (var showtime of movie.showtimes) {
-        showtime.datetime = new Date(showtime.datetime);
-        showtime.withinRange = true;
-      }
-    }
+
+    this.initMovies(MOVIES);
+    this.datetimeRanges = this.calculateDatetimeRanges(MOVIES);
+
     this.state = {movies: MOVIES};
     this.movieChecked = this.movieChecked.bind(this);
     this.rangeChanged = this.rangeChanged.bind(this);
@@ -22,8 +20,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MoviesFilter movies={this.state.movies} movieChecked={this.movieChecked} rangeChanged={this.rangeChanged} />
-        <MoviesList data={this.state.movies} />
+        <MoviesFilter
+          movies={this.state.movies}
+          movieChecked={this.movieChecked}
+          rangeChanged={this.rangeChanged}
+          datetimeRanges={this.datetimeRanges}
+        />
+        <MoviesList
+          data={this.state.movies}
+          datetimeRanges={this.datetimeRanges}
+        />
       </div>
     );
   }
@@ -47,6 +53,29 @@ class App extends Component {
       return movie;
     });
     this.setState({movies: newMovies});
+  }
+
+  initMovies(movies) {
+    for (var movie of movies) {
+      movie.checked = false;
+      for (var showtime of movie.showtimes) {
+        showtime.datetime = new Date(showtime.datetime);
+        showtime.withinRange = true;
+      }
+    }
+  }
+
+  calculateDatetimeRanges(movies) {
+    var datetimes = [];
+    for (var movie of movies) {
+      var movieDatetimes = movie.showtimes.map(function(showtime) {return showtime.datetime});
+      datetimes = datetimes.concat(movieDatetimes);
+    }
+    var sortedDatetimes = datetimes.sort();
+    return({
+      floor: Datetime.floor(sortedDatetimes[0]),
+      ceiling: Datetime.ceiling(sortedDatetimes[sortedDatetimes.length - 1])
+    });
   }
 }
 

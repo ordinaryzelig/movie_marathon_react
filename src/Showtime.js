@@ -7,7 +7,7 @@ class Showtime extends Component {
     return(
       <div className={'showtime ' + this.selectableClass()}>
         <span className="title">{this.props.movie.title}</span>
-        <span className="time"> @ {Formatter.formatTime(this.props.showtime.datetime)}</span>
+        <span className="time">{Formatter.formatTime(this.props.showtime.datetime)}</span>
       </div>
     );
   }

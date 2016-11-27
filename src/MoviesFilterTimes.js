@@ -8,13 +8,8 @@ class MoviesFilterTimes extends Component {
   constructor(props) {
     super(props);
 
-    this.sortedShowtimes = this.props.datetimes.sort();
-
-    this.earliestTime = this.props.datetimes[0]
-    this.floorTime = Datetime.floor(this.earliestTime);
-
-    this.latestTime = this.props.datetimes[this.props.datetimes.length - 1];
-    this.ceilingTime = Datetime.ceiling(this.latestTime);
+    this.floorTime = props.datetimeRanges.floor;
+    this.ceilingTime = props.datetimeRanges.ceiling;
 
     this.max = (this.ceilingTime - this.floorTime) / 60000;
 
