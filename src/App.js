@@ -59,6 +59,7 @@ class App extends Component {
     for (var movie of movies) {
       movie.checked = false;
       for (var showtime of movie.showtimes) {
+        showtime.movie = movie;
         showtime.datetime = new Date(showtime.datetime);
         showtime.withinRange = true;
       }

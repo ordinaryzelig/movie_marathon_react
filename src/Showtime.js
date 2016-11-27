@@ -6,7 +6,7 @@ class Showtime extends Component {
   render() {
     return(
       <div className={'showtime ' + this.selectableClass()} style={{marginLeft: this.marginLeft()}}>
-        <span className="title">{this.props.movie.title}</span>
+        <span className="title">{this.props.showtime.movie.title}</span>
         <span className="time">{Formatter.formatTime(this.props.showtime.datetime)}</span>
       </div>
     );
@@ -15,7 +15,7 @@ class Showtime extends Component {
   selectableClass() {
     //console.log(this.props.movie.checked);
     //console.log(this.props.showtime.withinRange);
-    if (this.props.movie.checked && this.props.showtime.withinRange) {
+    if (this.props.showtime.movie.checked && this.props.showtime.withinRange) {
       return 'selectable';
     } else {
       return 'unselectable';

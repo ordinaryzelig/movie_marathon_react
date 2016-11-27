@@ -10,7 +10,6 @@ class MoviesList extends Component {
         showtimes.push(
           <Showtime
             key={key}
-            movie={movie}
             showtime={showtime}
             datetimeRanges={this.props.datetimeRanges}
           />
