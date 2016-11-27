@@ -7,7 +7,7 @@ class Showtime extends Component {
     return(
       <div
         className={'showtime ' + this.selectableClass()}
-        style={{marginLeft: this.marginLeft()}}
+        style={{marginLeft: this.marginLeft(), width: this.runtimeWidth()}}
         onClick={() => this.props.onShowtimeSelect(this.props.showtime)}
       >
         <span className="title">{this.props.showtime.movie.title}</span>
@@ -32,6 +32,11 @@ class Showtime extends Component {
       / (this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor)
       * 100;
     return `${percent}%`;
+  }
+
+  runtimeWidth() {
+    var spanMinutes = (this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor) / 60000;
+    return (this.props.showtime.runtime / spanMinutes) * 100;
   }
 }
 

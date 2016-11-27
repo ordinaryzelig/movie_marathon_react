@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Formatter from './Formatter';
+import './MoviesFilterCheckboxes.css';
 
 class MoviesFilterCheckboxes extends Component {
   render() {
@@ -8,7 +9,7 @@ class MoviesFilterCheckboxes extends Component {
         <li key={`${movie.title} ${movie.id}`}>
           <label>
             <input type="checkbox" checked={movie.checked} onChange={(event) => this.props.movieChecked(movie.id, event.target.checked)} />
-            {movie.title}
+            <span className="title">{movie.title}</span> <span className="runtime">({Formatter.formatRuntime(movie.runtime)})</span>
           </label>
         </li>
       );

@@ -28,6 +28,16 @@ const Formatter = {
     } else {
       return 'a.m.';
     }
+  },
+
+  formatRuntime: function(minutes) {
+    if (minutes) {
+      var hours = Math.floor(minutes / 60);
+      var mins = minutes % 60;
+      return `${hours}h ${mins}m`;
+    } else {
+      return '?';
+    }
   }
 }
 
