@@ -19,7 +19,7 @@ class App extends Component {
       showtimes: this.extractShowtimes(MOVIES),
     };
     this.movieChecked = this.movieChecked.bind(this);
-    this.rangeChanged = this.rangeChanged.bind(this);
+    this.onFilterTimeChange = this.onFilterTimeChange.bind(this);
     this.onShowtimeSelected = this.onShowtimeSelected.bind(this);
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
         <MoviesFilter
           movies={this.state.movies}
           movieChecked={this.movieChecked}
-          rangeChanged={this.rangeChanged}
+          onFilterTimeChange={this.onFilterTimeChange}
           datetimeRanges={this.datetimeRanges}
         />
         <SelectedShowtimes
@@ -54,7 +54,7 @@ class App extends Component {
     this.setState({movies: newMovies});
   }
 
-  rangeChanged(range) {
+  onFilterTimeChange(range) {
     var newMovies = this.state.movies.map((movie) => {
       movie.showtimes = movie.showtimes.map((showtime) => {
         showtime.withinRange = range[0] <= showtime.datetime && range[1] >= showtime.datetime;

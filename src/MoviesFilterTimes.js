@@ -34,7 +34,7 @@ class MoviesFilterTimes extends Component {
   onChange(range) {
     var minDatetime = Datetime.addMinutes(this.floorTime, range[0]);
     var maxDatetime = Datetime.addMinutes(this.floorTime, range[1]);
-    this.props.rangeChanged([minDatetime, maxDatetime]);
+    this.props.onFilterTimeChange([minDatetime, maxDatetime]);
   }
 
   formatTip(minutes) {

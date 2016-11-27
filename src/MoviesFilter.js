@@ -22,7 +22,7 @@ class MoviesFilter extends Component {
         />
         <MoviesFilterTimes
           datetimeRanges={this.props.datetimeRanges}
-          rangeChanged={this.props.rangeChanged}
+          onFilterTimeChange={this.props.onFilterTimeChange}
         />
       </div>
     );
