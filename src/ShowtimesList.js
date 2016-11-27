@@ -3,17 +3,20 @@ import Showtime from './Showtime';
 
 class ShowtimesList extends Component {
   render() {
-    var showtimeComponents = this.props.showtimes.map((showtime) => {
-      var key = `${showtime.movie.id}-${showtime.datetime}`;
-      return(
-        <Showtime
-          key={key}
-          showtime={showtime}
-          datetimeRanges={this.props.datetimeRanges}
-          showtimeSelected={this.props.showtimeSelected}
-        />
-      );
-    });
+    var showtimeComponents = [];
+    for (var showtime of this.props.showtimes) {
+      if (showtime.movie.checked) {
+        var key = `${showtime.movie.id}-${showtime.datetime}`;
+        showtimeComponents.push(
+          <Showtime
+            key={key}
+            showtime={showtime}
+            datetimeRanges={this.props.datetimeRanges}
+            showtimeSelected={this.props.showtimeSelected}
+          />
+        );
+      }
+    }
 
     return(
       <div>

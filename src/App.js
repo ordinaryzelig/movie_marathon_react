@@ -66,9 +66,11 @@ class App extends Component {
   }
 
   showtimeSelected(showtime) {
-    this.markSelected(showtime);
-    //this.makeMovieIneligible(showtime.movie);
-    //this.makeConflictingShowtimesIneligible(showtime);
+    if (!showtime.selected) {
+      this.markSelected(showtime);
+      //this.makeMovieIneligible(showtime.movie);
+      //this.makeConflictingShowtimesIneligible(showtime);
+    }
   }
 
   //////////
