@@ -3,11 +3,12 @@
   position: relative;
   height: 20px;
   margin: 5px 0 5px 0;
+  background-color: blue;
 }
 
 .showtime.selected {
   font-weight: bold;
-  color: yellow;
+  background-color: green;
 }
 
 .showtime.selected, .showtime.selectable {
@@ -23,7 +24,6 @@
 }
 
 .showtime .title {
-  background-color: blue;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
