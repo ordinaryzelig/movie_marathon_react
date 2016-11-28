@@ -19,7 +19,7 @@ class App extends Component {
       showtimes: this.extractShowtimes(MOVIES),
     };
     this.datetimeRanges = this.calculateDatetimeRanges(this.state.showtimes);
-    this.movieChecked = this.movieChecked.bind(this);
+    this.onMovieCheckboxToggle = this.onMovieCheckboxToggle.bind(this);
     this.onFilterTimeChange = this.onFilterTimeChange.bind(this);
     this.onShowtimeSelect = this.onShowtimeSelect.bind(this);
   }
@@ -29,7 +29,7 @@ class App extends Component {
       <div>
         <MoviesFilterCheckboxes
           movies={this.state.movies}
-          movieChecked={this.movieChecked}
+          onMovieCheckboxToggle={this.onMovieCheckboxToggle}
         />
         <SelectedShowtimes
           showtimes={this.state.showtimes.selected()}
@@ -47,7 +47,7 @@ class App extends Component {
     );
   }
 
-  movieChecked(movieId, checked) {
+  onMovieCheckboxToggle(movieId, checked) {
     var newMovies = this.state.movies.slice();
     for (var movie of newMovies) {
       if (movie.id === movieId) {
