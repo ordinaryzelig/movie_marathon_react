@@ -4,7 +4,6 @@ import MOVIES from './MOVIES';
 import Datetime from './Datetime';
 
 import ShowtimesList from './ShowtimesList';
-import SelectedShowtimes from './SelectedShowtimes';
 import MoviesFilterCheckboxes from './MoviesFilterCheckboxes';
 import MoviesFilterTimes from './MoviesFilterTimes';
 
@@ -30,9 +29,6 @@ class App extends Component {
         <MoviesFilterCheckboxes
           movies={this.state.movies}
           onMovieCheckboxToggle={this.onMovieCheckboxToggle}
-        />
-        <SelectedShowtimes
-          showtimes={this.state.showtimes.selected()}
         />
         <MoviesFilterTimes
           datetimeRanges={this.datetimeRanges}

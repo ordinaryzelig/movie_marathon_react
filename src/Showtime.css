@@ -17,7 +17,7 @@
 }
 
 .showtime.unselectable {
-  opacity: 0.35;
+  display: none;
 }
 
 .showtime .title {
