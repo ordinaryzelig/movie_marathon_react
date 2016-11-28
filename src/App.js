@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import MOVIES from './MOVIES';
+import Datetime from './Datetime';
+
 import ShowtimesList from './ShowtimesList';
 import SelectedShowtimes from './SelectedShowtimes';
-
-import MoviesFilter from './MoviesFilter';
-import Datetime from './Datetime';
+import MoviesFilterCheckboxes from './MoviesFilterCheckboxes';
+import MoviesFilterTimes from './MoviesFilterTimes';
 
 class App extends Component {
   constructor(props) {
@@ -26,14 +27,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MoviesFilter
+        <MoviesFilterCheckboxes
           movies={this.state.movies}
           movieChecked={this.movieChecked}
-          onFilterTimeChange={this.onFilterTimeChange}
-          datetimeRanges={this.datetimeRanges}
         />
         <SelectedShowtimes
           showtimes={this.state.showtimes.selected()}
+        />
+        <MoviesFilterTimes
+          datetimeRanges={this.datetimeRanges}
+          onFilterTimeChange={this.onFilterTimeChange}
         />
         <ShowtimesList
           showtimes={this.state.showtimes}
