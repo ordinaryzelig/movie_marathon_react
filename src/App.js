@@ -148,6 +148,7 @@ class App extends Component {
       }
     }
     this.addShowtimeFunctions(showtimes);
+    this.calculateLayovers(showtimes.selected());
     this.setState({showtimes: showtimes});
   }
 
@@ -178,6 +179,14 @@ class App extends Component {
         if (conflicts) { return conflicts }
       }
       return false;
+    }
+  }
+
+  calculateLayovers(showtimes) {
+    for (var idx = 0; idx < showtimes.length - 1; idx++) {
+      var showtime = showtimes[idx];
+      var nextShowtime = showtimes[idx + 1];
+      showtime.layoverMinutes = Datetime.minutesBetween(showtime.endTime, nextShowtime.datetime);
     }
   }
 }
