@@ -1,3 +1,7 @@
 #movies-filter .runtime {
   font-size: 75%;
 }
+
+#movies-filter li.checked .title {
+  font-weight: bold;
+}
