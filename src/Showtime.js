@@ -9,7 +9,12 @@ class Showtime extends Component {
         style={{marginLeft: this.marginLeft(), width: this.runtimeWidth()}}
         onClick={() => this.props.onShowtimeSelect(this.props.showtime)}
       >
-        <div className="title">{this.props.showtime.movie.title}</div>
+        <div
+          className="title"
+          title={this.props.showtime.movie.title}
+        >
+          {this.props.showtime.movie.title}
+        </div>
       </div>
     );
   }
