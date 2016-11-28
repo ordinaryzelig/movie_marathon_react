@@ -3,6 +3,7 @@ import Rcslider from 'rc-slider';
 require('rc-slider/assets/index.css');
 import Formatter from './Formatter';
 import Datetime from './Datetime';
+import './MoviesFilterTimes.css';
 
 class MoviesFilterTimes extends Component {
   constructor(props) {
@@ -19,16 +20,18 @@ class MoviesFilterTimes extends Component {
 
   render() {
     return(
-      <Rcslider
-        min={0}
-        max={this.max}
-        step={15}
-        tipFormatter={this.formatTip}
-        range
-        marks={this.marks()}
-        defaultValue={[0, this.max]}
-        onChange={this.onChange}
-      />
+      <div id="movies-filter-times">
+        <Rcslider
+          min={0}
+          max={this.max}
+          step={15}
+          tipFormatter={this.formatTip}
+          range
+          marks={this.marks()}
+          defaultValue={[0, this.max]}
+          onChange={this.onChange}
+        />
+      </div>
     );
   }
 
