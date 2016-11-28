@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Showtime.css';
+import Datetime from './Datetime';
 
 class Showtime extends Component {
   render() {
@@ -38,7 +39,7 @@ class Showtime extends Component {
   }
 
   runtimeWidth() {
-    var spanMinutes = (this.props.datetimeRanges.ceiling - this.props.datetimeRanges.floor) / 60000;
+    var spanMinutes = Datetime.minutesBetween(this.props.datetimeRanges.floor, this.props.datetimeRanges.ceiling);
     var percent = (this.props.showtime.runtime / spanMinutes) * 100;
     return `${percent}%`;
   }

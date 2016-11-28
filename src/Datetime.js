@@ -9,6 +9,10 @@ const Datetime = {
 
   ceiling: function(datetime) {
     return this.addMinutes(datetime, 60 - datetime.getMinutes());
+  },
+
+  minutesBetween: function(a, b) {
+    return (b - a) / 60000;
   }
 };
 
