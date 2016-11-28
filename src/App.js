@@ -47,10 +47,10 @@ class App extends Component {
     );
   }
 
-  onMovieCheckboxToggle(movieId, checked) {
+  onMovieCheckboxToggle(target, checked) {
     var newMovies = this.state.movies.slice();
     for (var movie of newMovies) {
-      if (movie.id === movieId) {
+      if (movie === target) {
         movie.checked = checked;
       }
     }
